@@ -1,0 +1,33 @@
+.shop-container {
+    padding: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+}
+
+.product-title {
+    margin: 10px 0 5px;
+    font-size: 16px;
+}
+
+.product-price {
+    font-weight: bold;
+    color: #333;
+}
