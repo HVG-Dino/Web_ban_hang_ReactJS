@@ -13,6 +13,17 @@ app.use('/api/admin/users', require('./routes/adminUsers'));
 const productRoutes = require('./routes/productRoutes');
 app.use('/api/admin/products', productRoutes);
 
+const categoryRoutes = require('./routes/categories');
+app.use('/api/categories', categoryRoutes);
+
+const supplierRoutes = require('./routes/supplierRoutes');
+app.use('/api/suppliers', supplierRoutes);
+
+const inventoryLogRoutes = require('./routes/inventoryLogRoutes');
+app.use('/api/inventory-logs', inventoryLogRoutes);
+
+const invoiceRoutes = require("./routes/invoiceRoutes");
+app.use("/api/invoices", invoiceRoutes);
 
 
 app.use('/api/products', require('./routes/products'));

@@ -5,13 +5,13 @@ import Shop from './pages/shop/Shop';
 import ProductDetail from './pages/shop/ProductDetail';
 import Cart from './pages/shop/Cart';
 import Dashboard from './pages/admin/Dashboard';
-import InvoiceList from './pages/admin/InvoiceList';
+import AdminInvoices from './pages/admin/AdminInvoices';
 import AdminProducts from './pages/admin/AdminProducts';
 import Login from './components/auth/AuthPopup';
 import Users from './pages/admin/Users';
-import Categories from './pages/admin/Categories';
-import Suppliers from './pages/admin/Suppliers';
-import Inventory from './pages/admin/Inventory';
+import CategoryManager from './pages/admin/CategoryManager';
+import SupplierManager from './pages/admin/SupplierManager';
+import InventoryLogManager from './pages/admin/InventoryLogManager';
 import AdminLayout from './pages/admin/AdminLayout';
 
 function App() {
@@ -30,12 +30,12 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="" element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="invoices" element={<InvoiceList />} />
+          <Route path="invoices" element={<AdminInvoices />} />
           <Route path="products" element={<AdminProducts />} />
           <Route path="users" element={<Users />} />
-          <Route path="categories" element={<Categories />} />
-          <Route path="suppliers" element={<Suppliers />} />
-          <Route path="inventory" element={<Inventory />} />
+          <Route path="categories" element={<CategoryManager />} />
+          <Route path="suppliers" element={<SupplierManager />} />
+          <Route path="inventory" element={<InventoryLogManager />} />
         </Route>
 
       </Routes>
