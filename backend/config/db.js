@@ -16,14 +16,12 @@ const config = {
 const poolPromise = new sql.ConnectionPool(config)
     .connect()
     .then(pool => {
-        console.log('✅ Đã kết nối SQL Server');
+        console.log('✅ Connected to MSSQL');
         return pool;
     })
     .catch(err => {
-        console.error('❌ Lỗi kết nối DB:', err);
+        console.error('❌ Database connection failed:', err);
+        process.exit(1); // Dừng hẳn server nếu DB fail
     });
 
-module.exports = {
-    sql,          // export sql để dùng type / query
-    poolPromise,  // export poolPromise để query
-};
+module.exports = { sql, poolPromise };

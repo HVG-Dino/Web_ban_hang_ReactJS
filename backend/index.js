@@ -9,7 +9,10 @@ app.use(express.json());
 
 // Routes
 app.use('/api/admin/users', require('./routes/adminUsers'));
-app.use('/api/admin/products', require('./routes/productRoutes'));
+
+const productRoutes = require('./routes/productRoutes');
+app.use('/api/admin/products', productRoutes);
+
 
 
 app.use('/api/products', require('./routes/products'));
