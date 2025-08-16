@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// Routes admin
 app.use('/api/admin/users', require('./routes/adminUsers'));
 
 const productRoutes = require('./routes/productRoutes');
@@ -26,7 +26,13 @@ const invoiceRoutes = require("./routes/invoiceRoutes");
 app.use("/api/invoices", invoiceRoutes);
 
 
+
+//Shop
 app.use('/api/products', require('./routes/products'));
+
+const suppliersRouter = require('./routes/suppliers');
+app.use('/api/suppliers_shop', suppliersRouter);
+
 app.use('/api/auth', require('./routes/auth')); // 👈 thêm auth
 
 app.listen(5000, () => console.log('🚀 Server chạy port 5000'));

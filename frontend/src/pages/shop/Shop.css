@@ -1,38 +1,48 @@
-/* Grid 6 cột */
+/* Toàn bộ grid chiếm chiều cao màn hình */
 .shop-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;
-    padding: 20px;
+
+    min-height: 100vh;
+    /* full height màn hình */
 }
 
 /* Cột 1 và 6 trống */
 .col-empty {
     background: transparent;
+
 }
 
 /* Cột 2: filter */
 .col-filter {
     border-right: 1px solid #eee;
-    padding-right: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    /* chiếm toàn bộ chiều cao cột */
+    box-sizing: border-box;
 }
 
+/* Sticky filters bên trong cột */
 .filters {
     position: sticky;
-    top: 90px;
+    top: 0;
+    /* luôn dính khi scroll */
 }
 
 /* Cột 3-5: sản phẩm */
 .col-products {
     grid-column: span 3;
-    /* chiếm 3 cột (3,4,5) */
+    padding-top: 50px;
 }
 
-/* Mỗi cột = 1 sản phẩm */
+/* Product grid */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* đúng 3 cột */
     gap: 20px;
 }
 
@@ -64,5 +74,33 @@
 
 .product-price {
     color: #333;
+    font-weight: bold;
+}
+
+.filter-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.filter-section h4 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.filter-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-items span {
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+}
+
+.filter-items span.active {
+    color: #007bff;
     font-weight: bold;
 }
