@@ -1,73 +1,68 @@
-.shop-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background: #fff;
-    border-bottom: 1px solid #ddd;
-}
-
-.logo {
-    font-size: 26px;
-    font-weight: bold;
-    color: #333;
-}
-
-.nav-links {
-    display: flex;
-    gap: 25px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #444;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.nav-links a:hover {
-    color: #f00;
-}
-
-.header-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.icon {
-    font-size: 18px;
-    cursor: pointer;
-    color: #333;
-}
-
-.icon:hover {
-    color: #f00;
-}
-
-/* Sản phẩm */
-.product-grid {
+/* Grid 6 cột */
+.shop-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: 20px;
     padding: 20px;
 }
 
+/* Cột 1 và 6 trống */
+.col-empty {
+    background: transparent;
+}
+
+/* Cột 2: filter */
+.col-filter {
+    border-right: 1px solid #eee;
+    padding-right: 15px;
+}
+
+.filters {
+    position: sticky;
+    top: 90px;
+}
+
+/* Cột 3-5: sản phẩm */
+.col-products {
+    grid-column: span 3;
+    /* chiếm 3 cột (3,4,5) */
+}
+
+/* Mỗi cột = 1 sản phẩm */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* đúng 3 cột */
+    gap: 20px;
+}
+
+/* Card sản phẩm */
 .product-card {
-    border: 1px solid #ddd;
-    padding: 10px;
     text-align: center;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px;
+    transition: transform 0.2s;
+    background: #fff;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
 }
 
 .product-image img {
-    max-width: 100%;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .product-title {
-    margin-top: 10px;
     font-size: 16px;
+    margin: 8px 0;
 }
 
 .product-price {
-    color: #f00;
+    color: #333;
     font-weight: bold;
 }

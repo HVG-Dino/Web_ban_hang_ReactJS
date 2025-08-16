@@ -13,20 +13,23 @@ import CategoryManager from './pages/admin/CategoryManager';
 import SupplierManager from './pages/admin/SupplierManager';
 import InventoryLogManager from './pages/admin/InventoryLogManager';
 import AdminLayout from './pages/admin/AdminLayout';
+import MainLayout from './components/layout/MainLayout';
+import Home from './pages/shop/Home';
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Trang khách hàng */}
-        <Route path="/" element={<Shop />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/login" element={<Login />} /> {/* ✅ thêm route login */}
+        {/* ✅ Layout khách hàng */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
 
-
-
-        {/* Admin Layout */}
+        {/* ✅ Layout admin */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="" element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
@@ -37,7 +40,6 @@ function App() {
           <Route path="suppliers" element={<SupplierManager />} />
           <Route path="inventory" element={<InventoryLogManager />} />
         </Route>
-
       </Routes>
     </Router>
   );
