@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";  // Tạo file CSS riêng cho Home
-import headerImg from "../../assets/header.png";
-import logosImg from "../../assets/logos.png";
+import headerImg from "../../images/header.png";
+import logosImg from "../../images/logos.png";
 
 function Home() {
     return (

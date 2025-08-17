@@ -1,0 +1,103 @@
+.product-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    padding: 40px;
+    align-items: start;
+}
+
+/* cột trống */
+.col.empty {
+    background: transparent;
+}
+
+/* Ảnh nằm ở cột 2 + 3 */
+.col.image {
+    grid-column: 2 / span 2;
+    display: flex;
+    justify-content: center;
+}
+
+.col.image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+/* Thông tin sản phẩm ở cột 4 + 5 */
+.col.info {
+    grid-column: 4 / span 2;
+    max-width: 100%;
+}
+
+.col.info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.stock {
+    color: red;
+    font-size: 14px;
+}
+
+/* Thanh stock luôn nằm gọn trong vùng info */
+.stock-bar {
+    width: 100%;
+    /* chiếm hết chiều ngang của .col.info */
+    max-width: 400px;
+    /* không vượt quá 400px */
+    height: 6px;
+    background: #eee;
+    border-radius: 4px;
+    margin: 5px 0 15px;
+    overflow: hidden;
+    /* chặn fill tràn ra ngoài */
+}
+
+.stock-fill {
+    height: 100%;
+    background: red;
+    border-radius: 4px;
+    max-width: 100%;
+    /* không cho vượt quá .stock-bar */
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.quantity button {
+    padding: 5px 12px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+}
+
+.add-to-cart {
+    width: 200px;
+    padding: 10px;
+    background: black;
+    color: white;
+    border: none;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.delivery {
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.checkout img {
+    margin-top: 15px;
+    width: 200px;
+}

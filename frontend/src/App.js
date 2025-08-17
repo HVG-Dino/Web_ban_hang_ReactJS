@@ -21,17 +21,17 @@ function App() {
     <Router>
       <Routes>
         {/* ✅ Layout khách hàng */}
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element={<Login />} />
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />   {/* ✅ Route mặc định khi "/" */}
+          <Route path="shop" element={<Shop />} />
+          <Route path="product/:id" element={<ProductDetail />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="login" element={<Login />} />
         </Route>
 
         {/* ✅ Layout admin */}
         <Route path="/admin" element={<AdminLayout />}>
-          <Route path="" element={<Dashboard />} />
+          <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="invoices" element={<AdminInvoices />} />
           <Route path="products" element={<AdminProducts />} />

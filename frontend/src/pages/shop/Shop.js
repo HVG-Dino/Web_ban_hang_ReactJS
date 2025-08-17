@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 import './Shop.css';
-
+import { useNavigate } from 'react-router-dom';
 function Shop() {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [suppliers, setSuppliers] = useState([]);
+
+    const navigate = useNavigate();
 
     // Filters state: lưu ID
     const [selectedCategoryID, setSelectedCategoryID] = useState('');
@@ -86,7 +88,7 @@ function Shop() {
                 </div>
 
                 <div className="filter-section filter-category">
-                    <h4>Brands</h4>
+                    <h4>Categories</h4>
                     <div className="filter-items">
                         <span
                             onClick={() => setSelectedCategoryID('')}
@@ -133,7 +135,9 @@ function Shop() {
             <div className="col-products">
                 <div className="product-grid">
                     {filteredProducts.map(prod => (
-                        <div key={prod.ProductID} className="product-card">
+                        <div key={prod.ProductID} className="product-card"
+                            onClick={() => navigate(`/product/${prod.ProductID}`)} // <-- thêm onClick
+                            style={{ cursor: 'pointer' }}>
                             <div className="product-image">
                                 <img src={`/images/${prod.ImageURL}`} alt={prod.ProductName} />
                             </div>

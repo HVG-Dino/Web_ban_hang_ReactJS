@@ -18,9 +18,18 @@ function Header() {
                 <NavLink to="/shop" className={({ isActive }) => isActive ? "active" : ""}>
                     Shop
                 </NavLink>
-                <NavLink to="/products" className={({ isActive }) => isActive ? "active" : ""}>
-                    Products
+                <NavLink
+                    to="/product"
+                    onClick={(e) => e.preventDefault()}  // ngăn điều hướng
+                    className={({ isActive }) => isActive ? "active" : ""}
+                >
+                    Product
                 </NavLink>
+
+
+                {/* <NavLink to="/product" className={({ isActive }) => isActive ? "active" : ""}>
+                    Product
+                </NavLink> */}
             </nav>
 
             <div className="header-icons">
