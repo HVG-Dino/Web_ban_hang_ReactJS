@@ -33,6 +33,8 @@ app.use('/api/products', require('./routes/products'));
 const suppliersRouter = require('./routes/suppliers');
 app.use('/api/suppliers_shop', suppliersRouter);
 
+app.use('/api/cart', require('./routes/cart'));
+
 app.use('/api/auth', require('./routes/auth')); // 👈 thêm auth
 
 app.listen(5000, () => console.log('🚀 Server chạy port 5000'));

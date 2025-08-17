@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './AuthPopup.css';
+import { useAuth } from '../AuthContext';  // ✅ import context
 
 function AuthPopup({ onClose }) {
     const [mode, setMode] = useState('login'); // login hoặc register
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const { login } = useAuth();  // ✅ lấy hàm login từ context
 
     const handleLogin = async () => {
         try {
@@ -14,7 +16,7 @@ function AuthPopup({ onClose }) {
             if (res.data.Role === 'admin') {
                 window.location.href = '/admin';
             } else {
-                localStorage.setItem('user', JSON.stringify(res.data));
+                login(res.data); // ✅ lưu user vào context + localStorage
                 onClose();
             }
         } catch (err) {
