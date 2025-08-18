@@ -30,7 +30,7 @@ function Cart({ isOpen, onClose, cartItems, onUpdateQty, onRemoveItem }) {
                     ) : (
                         cartItems.map((item) => (
                             <div className="cart-item" key={item.id}>
-                                <img src={item.image} alt={item.name} />
+                                <img src={`/images/${item.image}`} alt={item.name} />
                                 <div className="item-info">
                                     <h4>{item.name}</h4>
                                     <p>Color: {item.color}</p>

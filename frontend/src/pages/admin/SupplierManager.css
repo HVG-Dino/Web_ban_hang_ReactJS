@@ -1,0 +1,70 @@
+.supplier-manager {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.supplier-manager h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.supplier-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.supplier-form input {
+    flex: 1 1 45%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.supplier-form button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.supplier-form button:hover {
+    background-color: #0056b3;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    margin-left: 8px;
+    padding: 4px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+    width: 100%;
+}

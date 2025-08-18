@@ -1,0 +1,65 @@
+.category-manager {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.category-manager h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.category-form {
+    margin-bottom: 20px;
+}
+
+.category-form input {
+    padding: 8px;
+    margin: 5px;
+    width: calc(50% - 22px);
+    box-sizing: border-box;
+}
+
+.category-form button {
+    padding: 8px 16px;
+    margin: 10px 5px 5px 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.category-form button:hover {
+    background-color: #0056b3;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    margin-left: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-left: 5px;
+}

@@ -2,15 +2,24 @@ import React from "react";
 import "./Dashboard.css";
 import { MdDashboard, MdCategory, MdInventory, MdNotifications } from "react-icons/md";
 import { FaUser, FaBox, FaFileInvoiceDollar, FaTruck } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // ✅ Thêm useNavigate
 
 function Dashboard() {
+    const navigate = useNavigate(); // ✅ Khởi tạo navigate
+
     const invoices = [
         { id: "#AHGA68", date: "23/09/2022", customer: "Jacob Marcus", payable: "$100", paid: "$000", due: "$000" },
         { id: "#AHGA68", date: "23/09/2022", customer: "Jacob Marcus", payable: "$100", paid: "$000", due: "$000" },
         { id: "#AHGA68", date: "23/09/2022", customer: "Jacob Marcus", payable: "$100", paid: "$000", due: "$000" },
         { id: "#AHGA68", date: "23/09/2022", customer: "Jacob Marcus", payable: "$100", paid: "$000", due: "$000" },
     ];
+
+    // ✅ Hàm xử lý đăng xuất
+    const handleLogout = () => {
+        // Nếu có localStorage/sessionStorage dùng để lưu login, xóa ở đây
+        // localStorage.removeItem("token"); // ví dụ
+        navigate("/"); // Chuyển về trang Home
+    };
 
     return (
         <div className="admin-container">
@@ -24,6 +33,10 @@ function Dashboard() {
                     <div className="user-info">
                         <MdNotifications className="notification-icon" />
                         <img src="https://i.pravatar.cc/40" alt="user" className="avatar" />
+                        {/* ✅ Nút đăng xuất */}
+                        <button className="logout-btn" onClick={handleLogout}>
+                            Logout
+                        </button>
                     </div>
                 </div>
 

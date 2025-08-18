@@ -1,47 +1,96 @@
+/* AuthPopup.css */
+
 .auth-popup-overlay {
     position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 999;
 }
 
 .auth-popup {
-    background: white;
-    padding: 20px;
+    background: #fff;
+    padding: 30px 40px;
     border-radius: 10px;
-    width: 350px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .auth-popup h2 {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: center;
+    font-weight: 600;
+    color: #333;
 }
 
 .auth-popup input {
     width: 100%;
-    padding: 10px;
-    margin: 8px 0;
+    padding: 12px 15px;
+    margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.auth-popup input:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 .auth-popup button {
     width: 100%;
-    padding: 10px;
-    background-color: #2a9d8f;
-    color: white;
+    padding: 12px;
+    background-color: #007bff;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
 }
 
-.error-msg {
-    color: red;
-    font-size: 14px;
-    margin-bottom: 10px;
+.auth-popup button:hover {
+    background-color: #0056b3;
+}
+
+.auth-popup p {
+    margin-top: 15px;
     text-align: center;
+    font-size: 14px;
+}
+
+.link-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    font-size: 14px;
+}
+
+.link-btn:hover {
+    color: #0056b3;
 }

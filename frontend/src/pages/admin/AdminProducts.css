@@ -1,0 +1,53 @@
+.admin-products {
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.admin-products h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-container input {
+    padding: 8px;
+    margin: 5px;
+    width: calc(50% - 22px);
+    box-sizing: border-box;
+}
+
+.form-container button {
+    padding: 8px 16px;
+    margin: 10px 5px 5px 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #0056b3;
+}
+
+.admin-products table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-products th,
+.admin-products td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.admin-products th {
+    background-color: #f2f2f2;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-left: 5px;
+}

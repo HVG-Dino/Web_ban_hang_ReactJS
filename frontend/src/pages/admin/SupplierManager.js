@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./SupplierManager.css";
 
 const API_URL = "http://localhost:5000/api/suppliers";
 
 const SupplierManager = () => {
     const [suppliers, setSuppliers] = useState([]);
-    const [form, setForm] = useState({ SupplierName: "", ContactName: "", Phone: "", Address: "" });
+    const [form, setForm] = useState({
+        SupplierName: "",
+        ContactName: "",
+        Phone: "",
+        Address: ""
+    });
+    const [formErrors, setFormErrors] = useState({});
     const [editingId, setEditingId] = useState(null);
 
-    // Load data
+    useEffect(() => {
+        fetchSuppliers();
+    }, []);
+
     const fetchSuppliers = async () => {
         try {
             const res = await axios.get(API_URL);
@@ -18,18 +28,26 @@ const SupplierManager = () => {
         }
     };
 
-    useEffect(() => {
-        fetchSuppliers();
-    }, []);
-
-    // Form input
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    // Submit thêm/sửa
+    const validateForm = () => {
+        const errors = {};
+        if (!form.SupplierName.trim()) {
+            errors.SupplierName = "Vui lòng nhập tên nhà cung cấp.";
+        }
+        return errors;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const errors = validateForm();
+        if (Object.keys(errors).length > 0) {
+            setFormErrors(errors);
+            return;
+        }
+
         try {
             if (editingId) {
                 await axios.put(`${API_URL}/${editingId}`, form);
@@ -38,15 +56,24 @@ const SupplierManager = () => {
                 await axios.post(API_URL, form);
                 alert("Thêm thành công!");
             }
-            setForm({ SupplierName: "", ContactName: "", Phone: "", Address: "" });
-            setEditingId(null);
+            resetForm();
             fetchSuppliers();
         } catch (err) {
             console.error("Lỗi lưu:", err);
         }
     };
 
-    // Xóa
+    const handleEdit = (sup) => {
+        setForm({
+            SupplierName: sup.SupplierName,
+            ContactName: sup.ContactName,
+            Phone: sup.Phone,
+            Address: sup.Address
+        });
+        setEditingId(sup.SupplierID);
+        setFormErrors({});
+    };
+
     const handleDelete = async (id) => {
         if (!window.confirm("Xóa supplier này?")) return;
         try {
@@ -58,31 +85,59 @@ const SupplierManager = () => {
         }
     };
 
-    // Edit
-    const handleEdit = (sup) => {
-        setForm({
-            SupplierName: sup.SupplierName,
-            ContactName: sup.ContactName,
-            Phone: sup.Phone,
-            Address: sup.Address
-        });
-        setEditingId(sup.SupplierID);
+    const resetForm = () => {
+        setForm({ SupplierName: "", ContactName: "", Phone: "", Address: "" });
+        setEditingId(null);
+        setFormErrors({});
     };
 
     return (
-        <div style={{ padding: "20px" }}>
+        <div className="supplier-manager">
             <h2>Quản lý Nhà cung cấp</h2>
 
-            <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-                <input type="text" name="SupplierName" placeholder="Tên" value={form.SupplierName} onChange={handleChange} required />
-                <input type="text" name="ContactName" placeholder="Người liên hệ" value={form.ContactName} onChange={handleChange} />
-                <input type="text" name="Phone" placeholder="SĐT" value={form.Phone} onChange={handleChange} />
-                <input type="text" name="Address" placeholder="Địa chỉ" value={form.Address} onChange={handleChange} />
+            <form onSubmit={handleSubmit} className="supplier-form">
+                <input
+                    type="text"
+                    name="SupplierName"
+                    placeholder="Tên nhà cung cấp"
+                    value={form.SupplierName}
+                    onChange={handleChange}
+                />
+                {formErrors.SupplierName && <div className="error">{formErrors.SupplierName}</div>}
+
+                <input
+                    type="text"
+                    name="ContactName"
+                    placeholder="Người liên hệ"
+                    value={form.ContactName}
+                    onChange={handleChange}
+                />
+
+                <input
+                    type="text"
+                    name="Phone"
+                    placeholder="Số điện thoại"
+                    value={form.Phone}
+                    onChange={handleChange}
+                />
+
+                <input
+                    type="text"
+                    name="Address"
+                    placeholder="Địa chỉ"
+                    value={form.Address}
+                    onChange={handleChange}
+                />
+
                 <button type="submit">{editingId ? "Cập nhật" : "Thêm mới"}</button>
-                {editingId && <button type="button" onClick={() => { setForm({ SupplierName: "", ContactName: "", Phone: "", Address: "" }); setEditingId(null); }}>Hủy</button>}
+                {editingId && (
+                    <button type="button" className="cancel-btn" onClick={resetForm}>
+                        Hủy
+                    </button>
+                )}
             </form>
 
-            <table border="1" cellPadding="8" style={{ width: "100%", borderCollapse: "collapse" }}>
+            <table>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -103,7 +158,9 @@ const SupplierManager = () => {
                             <td>{sup.Address}</td>
                             <td>
                                 <button onClick={() => handleEdit(sup)}>Sửa</button>
-                                <button onClick={() => handleDelete(sup.SupplierID)} style={{ marginLeft: "8px" }}>Xóa</button>
+                                <button className="delete-btn" onClick={() => handleDelete(sup.SupplierID)}>
+                                    Xóa
+                                </button>
                             </td>
                         </tr>
                     ))}
