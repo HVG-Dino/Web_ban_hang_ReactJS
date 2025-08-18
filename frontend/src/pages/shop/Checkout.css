@@ -1,0 +1,65 @@
+.checkout-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.checkout-content {
+    display: flex;
+    gap: 40px;
+}
+
+.checkout-form,
+.checkout-summary {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.checkout-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.checkout-form input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.checkout-summary table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.checkout-summary th,
+.checkout-summary td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.payment-method {
+    text-align: center;
+}
+
+.paypal-btn {
+    background: #ffc439;
+    color: #111;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+}

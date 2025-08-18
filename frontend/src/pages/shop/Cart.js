@@ -1,8 +1,11 @@
 import React from "react";
 import "./Cart.css";
 import { FaTimes, FaTrashAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function Cart({ isOpen, onClose, cartItems, onUpdateQty, onRemoveItem }) {
+    const navigate = useNavigate();
+
     if (!isOpen) return null;
 
     const subtotal = cartItems.reduce(
@@ -60,8 +63,24 @@ function Cart({ isOpen, onClose, cartItems, onUpdateQty, onRemoveItem }) {
                         <span>Subtotal</span>
                         <span>${subtotal.toFixed(2)}</span>
                     </div>
-                    <button className="checkout-btn">Checkout</button>
-                    <button className="view-cart-btn">View Cart</button>
+                    <button
+                        className="checkout-btn"
+                        onClick={() => {
+                            onClose(); // đóng popup giỏ hàng
+                            navigate("/checkout");
+                        }}
+                    >
+                        Checkout
+                    </button>
+                    <button
+                        className="view-cart-btn"
+                        onClick={() => {
+                            onClose(); // đóng popup giỏ hàng
+                            navigate("/view_cart");
+                        }}
+                    >
+                        View Cart
+                    </button>
                 </div>
             </div>
         </div>

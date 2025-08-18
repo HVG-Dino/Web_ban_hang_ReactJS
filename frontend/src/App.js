@@ -15,6 +15,8 @@ import InventoryLogManager from './pages/admin/InventoryLogManager';
 import AdminLayout from './pages/admin/AdminLayout';
 import MainLayout from './components/layout/MainLayout';
 import Home from './pages/shop/Home';
+import Checkout from "./pages/shop/Checkout";
+import ViewCart from "./pages/shop/ViewCart";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="shop" element={<Shop />} />
           <Route path="product/:id" element={<ProductDetail />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/view_cart" element={<ViewCart />} />
           <Route path="login" element={<Login />} />
         </Route>
 
